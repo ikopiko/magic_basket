@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -32,6 +33,9 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-
+    Route::get('/company', function(){
+	return view('auth/register_company');
+	});
+    Route::post('/company', 'company_reg@create');
     Route::get('/home', 'HomeController@index');
 });
